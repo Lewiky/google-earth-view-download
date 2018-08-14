@@ -6,7 +6,7 @@ from sys import argv
 def download(num, path):
     passed = 0
     skipped = 0
-    for i in range(1000, int(num+1000):
+    for i in range(1000, num+1000):
         path = f'https://www.gstatic.com/prettyearth/assets/full/{i}.jpg'
         r = requests.head(path)
         if r.headers['content-type'] == 'image/jpeg':
@@ -20,4 +20,4 @@ def download(num, path):
     print("")
 
 if __name__ == '__main__':
-    download(argv[1], argv[2])
+    download(int(argv[1]), argv[2])
