@@ -3,7 +3,7 @@ import requests
 import shutil
 from sys import argv
 
-def download(num, path):
+def download(num, dirpath):
     passed = 0
     skipped = 0
     for i in range(1000, num+1000):
@@ -11,7 +11,7 @@ def download(num, path):
         r = requests.head(path)
         if r.headers['content-type'] == 'image/jpeg':
             p = requests.get(path, stream=True)
-            with open(f'{path}/{i}.jpg', 'wb') as f:
+            with open(f'{dirpath}/{i}.jpg', 'wb') as f:
                 shutil.copyfileobj(p.raw, f)
             passed += 1
         else:
